@@ -1,0 +1,96 @@
+[tool.poetry]
+authors = ["Craig Trim <craigtrim@gmail.com>"]
+
+maintainers = ["Craig Trim <craigtrim@gmail.com>"]
+
+description = "Linguistic Pattern Lab using spaCy"
+license = "MIT"
+name = "lingpatlab"
+readme = "README.md"
+version = "0.1.10"
+
+keywords = [
+    "nlp",
+    "spacy",
+    "text-analysis",
+    "linguistic-patterns",
+    "natural-language-processing",
+    "machine-learning",
+    "api",
+    "cloud",
+    "AWS",
+    "microservice",
+    "utility",
+]
+
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Web Environment",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Text Processing :: Linguistic",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+repository = "https://github.com/craigtrim/lingpatlab"
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/craigtrim/lingpatlab/issues"
+
+[tool.poetry.dependencies]
+baseblock = "*"
+python = "^3.11"
+spacy = "3.7.4"
+unicodedata2 = "*"
+openai = "*"
+
+[tool.poetry.extras]
+linting = []
+testing = []
+packaging = []
+
+[tool.poetry.group.linting.dependencies]
+autopep8 = "*"
+flakeheaven = "*"
+pre-commit = "^2.20.0"
+
+[tool.poetry.group.testing.dependencies]
+pytest = "*"
+pytest-cov = "^4.1.0"
+plac = "*"
+
+[tool.poetry.group.packaging.dependencies]
+# keep the dependency here -- this way `parse-text/Dockerfile` won't require it in a build
+en_core_web_sm = { path = "resources/lib/en_core_web_sm-3.7.0.tar.gz" }
+
+[tool.poetry.build]
+generate-setup-file = true
+
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core>=1.0.0"]
+
+[tool.flakeheaven]
+base = "https://raw.githubusercontent.com/flakeheaven/flakeheaven/main/pyproject.toml"
+exclude = ["__init__.py", "README.md", "setup.py", ".venv", ".git"]
+format = "grouped"
+max_line_length = 500
+show_source = true
+
+[tool.flakeheaven.plugins]
+# F401 (Missing Import)
+# F403 (Unable to Detect Undefined Names)
+"flake8-*" = ["+*"]
+flake8-bandit = ["-*", "+S1??"]
+flake8-docstrings = ["-*"]
+pyflakes = ["+*", "-F401", "-F403"]
