@@ -22,6 +22,11 @@ class TokenParserCoordinates(BaseObject):
             craigtrim@gmail.com
             *   rename component
                 https://github.com/craigtrim/spacy-token-parser/issues/3
+        Updated:
+            4-Jun-2024
+            craigtrim@gmail.com
+            *   check last_y is None
+                https://github.com/craigtrim/LingPatLab/issues/1
         """
         BaseObject.__init__(self, __name__)
 
@@ -54,11 +59,17 @@ class TokenParserCoordinates(BaseObject):
             last_y = token['y']
 
         # ---------------------------------------------------------- ##
-        # Purpose:    Validate Coordinate Positioning
-        # Reference:  https://github.com/grafflr/graffl-core/issues/41#issuecomment-942803328
+        # Purpose:  Validate Coordinate Positioning
+        # Issue:    https://github.com/grafflr/graffl-core/issues/41#issuecomment-942803328
         # ---------------------------------------------------------- ##
         actual_len = sum([len(x['text']) for x in tokens])
-        if last_y > actual_len:
+        
+        # ---------------------------------------------------------- ##
+        # Purpose:  Add Additional Check for last_y
+        # Issue:    https://github.com/craigtrim/LingPatLab/issues/1
+        # Updated:  4-Jun-2024
+        # ---------------------------------------------------------- ##
+        if last_y is not None and last_y > actual_len:
             self.logger.error('\n'.join([
                 'Coordinate Exceed Actual Length',
                 f'\tTokens: {tokens}',
