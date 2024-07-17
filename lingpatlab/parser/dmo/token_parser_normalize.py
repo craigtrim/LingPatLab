@@ -3,7 +3,7 @@
 """ Apply Trailing Spaces to Text where appropriate """
 
 
-from baseblock import BaseObject
+from lingpatlab.baseblock import BaseObject
 
 
 class TokenParserNormalize(BaseObject):

@@ -4,7 +4,7 @@
 
 
 from typing import List, Optional
-from baseblock import BaseObject
+from lingpatlab.baseblock import BaseObject
 from lingpatlab.utils.dto import Sentences
 from lingpatlab.analyze.dmo import PeopleSequenceExtractor, PeopleSequenceAnalysis
 

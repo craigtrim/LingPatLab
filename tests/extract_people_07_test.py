@@ -3,7 +3,7 @@
 
 
 import unittest
-from baseblock import FileIO
+from lingpatlab.baseblock import FileIO
 from lingpatlab import LingPatLab
 from lingpatlab.utils.dto import Sentences
 

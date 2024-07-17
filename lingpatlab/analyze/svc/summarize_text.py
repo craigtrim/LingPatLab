@@ -4,7 +4,7 @@
 
 
 from typing import List, Optional
-from baseblock import BaseObject, CryptoBase, Enforcer
+from lingpatlab.baseblock import BaseObject, CryptoBase, Enforcer
 from openai import OpenAI
 from lingpatlab.analyze.dto import (
     generate_prompt,

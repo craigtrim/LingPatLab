@@ -5,7 +5,7 @@
 
 import spacy
 
-from baseblock import BaseObject
+from lingpatlab.baseblock import BaseObject
 from lingpatlab.segmenter.dmo import (
     BulletPointCleaner,
     DelimitersToPeriods,

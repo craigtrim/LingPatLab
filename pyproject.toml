@@ -7,7 +7,7 @@ description = "Linguistic Pattern Lab using spaCy"
 license = "MIT"
 name = "lingpatlab"
 readme = "README.md"
-version = "0.1.12"
+version = "0.1.13"
 
 keywords = [
     "nlp",
@@ -32,9 +32,6 @@ classifiers = [
     "Natural Language :: English",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
-    "Programming Language :: Python :: 3.7",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Topic :: Software Development :: Libraries :: Python Modules",
@@ -48,7 +45,6 @@ repository = "https://github.com/craigtrim/lingpatlab"
 "Bug Tracker" = "https://github.com/craigtrim/lingpatlab/issues"
 
 [tool.poetry.dependencies]
-baseblock = "*"
 python = "^3.10"
 spacy = "3.7.4"
 unicodedata2 = "*"

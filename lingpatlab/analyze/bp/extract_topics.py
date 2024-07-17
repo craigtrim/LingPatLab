@@ -3,7 +3,7 @@
 """ Extract Part-of-Speech (POS) Patterns from Text """
 
 
-from baseblock import BaseObject
+from lingpatlab.baseblock import BaseObject
 from typing import List, Dict, Optional
 from lingpatlab.utils.dto import Sentences
 from lingpatlab.analyze.svc import ExtractTopicEntities

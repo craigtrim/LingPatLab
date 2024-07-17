@@ -4,7 +4,7 @@
 
 
 from typing import List
-from baseblock import BaseObject, Stopwatch, Enforcer
+from lingpatlab.baseblock import BaseObject, Stopwatch, Enforcer
 from functools import lru_cache
 
 

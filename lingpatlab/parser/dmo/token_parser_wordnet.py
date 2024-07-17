@@ -3,7 +3,7 @@
 """ Add Wordnet Flag to Token """
 
 
-from baseblock import BaseObject
+from lingpatlab.baseblock import BaseObject
 from lingpatlab.utils import is_wordnet_term
 
 

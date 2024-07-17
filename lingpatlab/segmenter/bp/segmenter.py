@@ -5,7 +5,7 @@
 
 from typing import List
 from functools import lru_cache
-from baseblock import BaseObject, Stopwatch, Enforcer
+from lingpatlab.baseblock import BaseObject, Stopwatch, Enforcer
 
 from lingpatlab.segmenter.svc import (
     PerformParagraphSegmentation,

@@ -1,6 +1,6 @@
 from typing import List
 
-from baseblock import Enforcer
+from lingpatlab.baseblock import Enforcer
 
 from .bp import *
 from .bp.tokenizer import Tokenizer

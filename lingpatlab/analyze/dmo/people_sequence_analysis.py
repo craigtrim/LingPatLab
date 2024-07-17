@@ -5,7 +5,7 @@
 
 from typing import List
 from collections import defaultdict
-from baseblock import BaseObject, Stopwatch
+from lingpatlab.baseblock import BaseObject, Stopwatch
 
 
 LAST_TOKEN_BLACKLIST = [

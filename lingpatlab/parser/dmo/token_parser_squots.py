@@ -3,7 +3,7 @@
 """ Transform unigram squots into unigram dquots """
 
 
-from baseblock import BaseObject
+from lingpatlab.baseblock import BaseObject
 
 
 class TokenParserSquots(BaseObject):

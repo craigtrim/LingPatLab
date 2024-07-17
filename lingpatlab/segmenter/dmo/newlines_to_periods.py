@@ -3,7 +3,7 @@
 """ Convert New Lines into Periods """
 
 
-from baseblock import BaseObject
+from lingpatlab.baseblock import BaseObject
 
 
 class NewlinesToPeriods(BaseObject):

@@ -3,7 +3,7 @@
 """ Prevent Bullet Points from Triggering False Positive Segmentation """
 
 
-from baseblock import BaseObject
+from lingpatlab.baseblock import BaseObject
 
 
 class BulletPointCleaner(BaseObject):

@@ -9,7 +9,7 @@ from .segmenter import Segmenter
 
 
 from typing import List
-from baseblock import Enforcer
+from lingpatlab.baseblock import Enforcer
 
 
 def tokenize_input_text(input_text: str) -> List[str]:

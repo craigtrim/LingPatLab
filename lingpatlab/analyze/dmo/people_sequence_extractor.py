@@ -5,7 +5,7 @@
 
 from typing import List, Dict
 from lingpatlab.utils.dto import Sentence
-from baseblock import BaseObject, Stopwatch
+from lingpatlab.baseblock import BaseObject, Stopwatch
 
 
 PATTERNS_1: List[str] = [

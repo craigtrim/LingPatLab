@@ -1,7 +1,7 @@
 # !/usr/bin/env python
 # -*- coding: UTF-8 -*-
 """ Generic Facade to interact with Pronouns """
-from baseblock import BaseObject
+from lingpatlab.baseblock import BaseObject
 
 
 class PronounFinder(BaseObject):

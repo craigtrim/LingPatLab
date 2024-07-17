@@ -3,7 +3,7 @@
 """ Post Process Sentences """
 
 
-from baseblock import BaseObject
+from lingpatlab.baseblock import BaseObject
 
 
 class PostProcessStructure(BaseObject):

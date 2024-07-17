@@ -4,7 +4,7 @@
 
 from typing import List
 from lingpatlab import LingPatLab, Sentence
-from baseblock import BaseObject, FileIO
+from lingpatlab.baseblock import BaseObject, FileIO
 
 
 class RegressionRunner(BaseObject):

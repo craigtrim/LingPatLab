@@ -3,7 +3,7 @@
 """ Normalize Numbered Lists to prevent False Positive Segmentation """
 
 
-from baseblock import BaseObject
+from lingpatlab.baseblock import BaseObject
 
 
 class NumberedListNormalizer(BaseObject):

@@ -6,7 +6,7 @@
 import spacy
 from spacy.tokens import Doc
 from spacy.util import filter_spans
-from baseblock import BaseObject
+from lingpatlab.baseblock import BaseObject
 
 
 class TokenParserSpacy(BaseObject):

@@ -3,7 +3,7 @@
 """ Extract People (with Anaphora Linking) """
 
 
-from baseblock import BaseObject, Enforcer
+from lingpatlab.baseblock import BaseObject, Enforcer
 from typing import List, Dict, Optional
 from lingpatlab.utils.dto import Sentences
 from lingpatlab.analyze.svc import ExtractPersonEntities

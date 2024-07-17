@@ -3,7 +3,7 @@
 
 
 import unittest
-from baseblock import Enforcer
+from lingpatlab.baseblock import Enforcer
 from lingpatlab import LingPatLab
 
 

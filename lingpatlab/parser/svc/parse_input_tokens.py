@@ -5,7 +5,7 @@
 
 from typing import List
 
-from baseblock import (
+from lingpatlab.baseblock import (
     BaseObject,
     Stopwatch
 )

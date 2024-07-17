@@ -7,7 +7,7 @@ from typing import List
 from pprint import pprint
 from lingpatlab import LingPatLab
 from lingpatlab.utils.dto import Sentences, Sentence
-from baseblock import FileIO
+from lingpatlab.baseblock import FileIO
 
 
 class TestSpacyCoreAPI(unittest.TestCase):

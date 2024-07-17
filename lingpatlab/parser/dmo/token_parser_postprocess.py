@@ -5,7 +5,7 @@
 
 from lingpatlab.utils.dmo import PorterStemmer
 
-from baseblock import BaseObject
+from lingpatlab.baseblock import BaseObject
 
 
 class TokenParserPostProcess(BaseObject):

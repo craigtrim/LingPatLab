@@ -5,7 +5,7 @@
 
 from spacy.lang.en import English
 
-from baseblock import BaseObject
+from lingpatlab.baseblock import BaseObject
 
 
 class SpacyDocSegmenter(BaseObject):

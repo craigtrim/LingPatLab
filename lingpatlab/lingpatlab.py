@@ -4,7 +4,7 @@
 
 
 from typing import List, Optional, Union
-from baseblock import BaseObject, Stopwatch, Enforcer
+from lingpatlab.baseblock import BaseObject, Stopwatch, Enforcer
 
 from lingpatlab.analyze.svc import SummarizeText
 from lingpatlab.parser.svc import ParseInputTokens

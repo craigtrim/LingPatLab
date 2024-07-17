@@ -5,7 +5,7 @@
 
 from string import ascii_lowercase
 
-from baseblock import BaseObject
+from lingpatlab.baseblock import BaseObject
 from lingpatlab.utils.os import (
     wordnet_terms_a, wordnet_terms_b,
     wordnet_terms_c, wordnet_terms_d,

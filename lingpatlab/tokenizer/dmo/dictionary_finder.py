@@ -1,7 +1,7 @@
 # !/usr/bin/env python
 # -*- coding: UTF-8 -*-
 """ Facade to find Dictionaries on Disk """
-from baseblock import BaseObject
+from lingpatlab.baseblock import BaseObject
 
 
 class DictionaryFinder(BaseObject):

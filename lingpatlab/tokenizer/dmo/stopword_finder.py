@@ -3,7 +3,7 @@
 """ Facade to find Stopwords Data on Disk """
 
 
-from baseblock import BaseObject
+from lingpatlab.baseblock import BaseObject
 from lingpatlab.tokenizer.dto import stopwords
 
 

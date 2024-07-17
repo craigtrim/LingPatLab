@@ -4,7 +4,7 @@
 
 import unittest
 from lingpatlab import Sentence, SpacyResult
-from baseblock import FileIO
+from lingpatlab.baseblock import FileIO
 from lingpatlab.utils.dto import (
     SpacyResult,
     Sentence,

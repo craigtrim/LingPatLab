@@ -5,7 +5,7 @@
 import unittest
 from lingpatlab import LingPatLab
 from lingpatlab.utils.dto import Sentences, Sentence, to_spacy_result
-from baseblock import FileIO
+from lingpatlab.baseblock import FileIO
 
 
 class TestSpacyCoreAPI(unittest.TestCase):

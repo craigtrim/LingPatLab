@@ -3,7 +3,7 @@
 
 
 from typing import List
-from baseblock import FileIO, Stopwatch
+from lingpatlab.baseblock import FileIO, Stopwatch
 from lingpatlab import LingPatLab
 from lingpatlab.utils.dto import Sentences, Sentence
 
