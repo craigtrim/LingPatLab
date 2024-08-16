@@ -4,6 +4,7 @@
 
 
 from typing import List
+from spacy.lang.en import English
 
 from lingpatlab.baseblock import (
     BaseObject,
@@ -29,7 +30,8 @@ from lingpatlab.utils.dto import (
 class ParseInputTokens(BaseObject):
     """ Use spaCy to Parse Input Tokens """
 
-    def __init__(self):
+    def __init__(self,
+                 en_spacy_model: English | None = None):
         """ Change Log
 
         Created:
@@ -52,23 +54,57 @@ class ParseInputTokens(BaseObject):
             craigtrim@gmail.com
             *   change dataflow
                 https://github.com/craigtrim/datapipe-apis/issues/45
+        Updated:
+            16-Aug-2024
+            craigtrim@gmail.com
+            *   optimize model instantiation
+            *   pre-init class methods in init function
+                https://github.com/craigtrim/LingPatLab/issues/2
         """
         BaseObject.__init__(self, __name__)
+        self._parse_squots = TokenParserSquots().process
+        self._spacy_parse = TokenParserSpacy(en_spacy_model).process
+        self._parse_result_set = TokenParserResultSet().process
+        self._parse_punkt = TokenParserPunctuation().process
+        self._normalize_parse = TokenParserNormalize().process
+        self._parse_coords = TokenParserCoordinates().process
+        self._parse_wordnet = TokenParserWordnet().process
+        self._post_process = TokenParserPostProcess().process
 
     def process(self,
-                tokens: List[str]) -> Sentence:
+                tokens: List[str]) -> Sentence | None:
 
         sw = Stopwatch()
 
-        tokens = TokenParserSquots().process(tokens)
-        doc = TokenParserSpacy().process(' '.join(tokens))
+        tokens = self._parse_squots(tokens)
+        if not tokens or not len(tokens):
+            return None
 
-        results = TokenParserResultSet().process(doc)
-        results = TokenParserPunctuation().process(results)
-        results = TokenParserNormalize().process(results)
-        results = TokenParserCoordinates().process(results)
-        results = TokenParserWordnet().process(results)
-        results = TokenParserPostProcess().process(results)
+        doc = self._spacy_parse(' '.join(tokens))
+
+        results = self._parse_result_set(doc)
+        if not results or not len(results):
+            return None
+
+        results = self._parse_punkt(results)
+        if not results or not len(results):
+            return None
+
+        results = self._normalize_parse(results)
+        if not results or not len(results):
+            return None
+
+        results = self._parse_coords(results)
+        if not results or not len(results):
+            return None
+
+        results = self._parse_wordnet(results)
+        if not results or not len(results):
+            return None
+
+        results = self._post_process(results)
+        if not results or not len(results):
+            return None
 
         sentence = Sentence([
             SpacyResult(**token) for token in results

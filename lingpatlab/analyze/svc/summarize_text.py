@@ -4,7 +4,7 @@
 
 
 from typing import List, Optional
-from lingpatlab.baseblock import BaseObject, CryptoBase, Enforcer
+from lingpatlab.baseblock import BaseObject, Enforcer
 from openai import OpenAI
 from lingpatlab.analyze.dto import (
     generate_prompt,
@@ -13,17 +13,11 @@ from lingpatlab.analyze.dto import (
     SYSTEM_PROMPT_SUMMARY,
 )
 
-decrypt_str = CryptoBase().decrypt_str
-
 
 class SummarizeText(BaseObject):
     """ Summarize Text based on Extracted Patterns """
 
     __client = None
-    __api_key = decrypt_str(
-        'gAAAAABjxO3Q7tB8owXW8SGTBPQfd1qRumPCAkucg0Hq9oeTE5v2V7wVFbnMRcFOf9GA1UcqLcAPXiRBK2KW7Cce0ws7ZkGFEylxKTsivvRngv9l9am7MjEcAV6VXpmiU-J3NCHzbQHkFc6TsXG5wuSj3OrjDVPtLw==')
-    __org_key = decrypt_str(
-        'gAAAAABjxO38JjDj6YiBcOYoG5QeePp6Pv5nhiBBK_TDHeyS6nu9yMl_8zDY1UQAVy5n5ybZtvJ8kcXVMfHuTymCgEXfJWgN7PHSkFA0xWmx6ZqMbXCPLAI=')
 
     def __init__(self):
         """ Change Log:
@@ -39,6 +33,12 @@ class SummarizeText(BaseObject):
             *   add type-checking on i/o
         """
         BaseObject.__init__(self, __name__)
+        from lingpatlab.baseblock import CryptoBase
+        decrypt_str = CryptoBase().decrypt_str
+        self.__api_key = decrypt_str(
+            'gAAAAABjxO3Q7tB8owXW8SGTBPQfd1qRumPCAkucg0Hq9oeTE5v2V7wVFbnMRcFOf9GA1UcqLcAPXiRBK2KW7Cce0ws7ZkGFEylxKTsivvRngv9l9am7MjEcAV6VXpmiU-J3NCHzbQHkFc6TsXG5wuSj3OrjDVPtLw==')
+        self.__org_key = decrypt_str(
+            'gAAAAABjxO38JjDj6YiBcOYoG5QeePp6Pv5nhiBBK_TDHeyS6nu9yMl_8zDY1UQAVy5n5ybZtvJ8kcXVMfHuTymCgEXfJWgN7PHSkFA0xWmx6ZqMbXCPLAI=')
 
     def process(self,
                 input_text: str) -> str:

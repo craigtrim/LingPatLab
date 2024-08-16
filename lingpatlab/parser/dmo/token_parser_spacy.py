@@ -5,14 +5,15 @@
 
 import spacy
 from spacy.tokens import Doc
-from spacy.util import filter_spans
+from spacy.lang.en import English
 from lingpatlab.baseblock import BaseObject
 
 
 class TokenParserSpacy(BaseObject):
     """ Perform spaCy parse and retokenization """
 
-    def __init__(self):
+    def __init__(self,
+                 en_spacy_model: English | None = None):
         """ Change Log
 
         Created:
@@ -25,9 +26,17 @@ class TokenParserSpacy(BaseObject):
             craigtrim@gmail.com
             *   rename component
                 https://github.com/craigtrim/spacy-token-parser/issues/3
+        Updated:
+            16-Aug-2024
+            craigtrim@gmail.com
+            *   optimize model instantiation
+                https://github.com/craigtrim/LingPatLab/issues/2
         """
         BaseObject.__init__(self, __name__)
-        self._nlp = spacy.load('en_core_web_sm')
+        if en_spacy_model is not None:
+            self._nlp = en_spacy_model
+        else:
+            self._nlp = spacy.load('en_core_web_sm')
 
     def process(self,
                 input_text: str) -> Doc:

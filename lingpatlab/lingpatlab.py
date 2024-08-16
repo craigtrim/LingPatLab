@@ -3,12 +3,17 @@
 """ API for spaCy Core Functionality """
 
 
-from typing import List, Optional, Union
-from lingpatlab.baseblock import BaseObject, Stopwatch, Enforcer
+from spacy.lang.en import English
 
+from lingpatlab.baseblock import (
+    BaseObject,
+    Stopwatch,
+    Enforcer
+)
+
+from lingpatlab.tokenizer.bp import Tokenizer
 from lingpatlab.analyze.svc import SummarizeText
 from lingpatlab.parser.svc import ParseInputTokens
-from lingpatlab.tokenizer.bp import Tokenizer
 
 from lingpatlab.analyze.bp import (
     ExtractTopics,
@@ -76,7 +81,7 @@ class LingPatLab(BaseObject):
         return summary
 
     def extract_people(self,
-                       sentences: Union[Sentence, Sentences]) -> List[str]:
+                       sentences: Sentence | Sentences) -> list[str]:
         """
         Extracts people from the given sentences.
 
@@ -101,7 +106,7 @@ class LingPatLab(BaseObject):
         return self.__people(sentences=sentences)
 
     def extract_topics(self,
-                       sentences: Union[Sentence, Sentences] = None) -> List[str]:
+                       sentences: Sentence | Sentences = None) -> list[str]:
         """
         Extracts phrases from the given structured Sentences object, which is a collection of parsed sentences.
 
@@ -123,7 +128,8 @@ class LingPatLab(BaseObject):
         return self.__topics(sentences=sentences)
 
     def parse_input_text(self,
-                         input_text: str) -> Sentence:
+                         input_text: str,
+                         en_spacy_model: English | None = None) -> Sentence:
         """
         Parses the given input text into a structured Sentence object, encapsulating the parsed tokens and their relations.
 
@@ -145,9 +151,9 @@ class LingPatLab(BaseObject):
             self.__tokenize = Tokenizer().input_text
 
         if not self.__parse:
-            self.__parse = ParseInputTokens().process
+            self.__parse = ParseInputTokens(en_spacy_model).process
 
-        input_tokens: List[str] = self.__tokenize(input_text)
+        input_tokens: list[str] = self.__tokenize(input_text)
         parse_results: Sentence = self.__parse(input_tokens)
 
         if self.isEnabledForDebug:
@@ -157,7 +163,8 @@ class LingPatLab(BaseObject):
         return parse_results
 
     def parse_input_lines(self,
-                          input_lines: List[str]) -> Sentences:
+                          input_lines: list[str],
+                          en_spacy_model: English | None = None) -> Sentences:
         """
         Parses a list of input lines (strings), each into a Sentence object, and returns them as a Sentences object.
 
@@ -178,6 +185,9 @@ class LingPatLab(BaseObject):
         sentences = []
 
         for input_text in input_lines:
-            sentences.append(self.parse_input_text(input_text))
+            sentences.append(self.parse_input_text(
+                input_text=input_text,
+                en_spacy_model=en_spacy_model
+            ))
 
         return Sentences(sentences)
