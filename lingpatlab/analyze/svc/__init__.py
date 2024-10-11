@@ -1,3 +1,2 @@
-from .summarize_text import SummarizeText
 from .extract_person_entities import ExtractPersonEntities
 from .extract_topic_entities import ExtractTopicEntities

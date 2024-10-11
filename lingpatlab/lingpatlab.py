@@ -12,7 +12,6 @@ from lingpatlab.baseblock import (
 )
 
 from lingpatlab.tokenizer.bp import Tokenizer
-from lingpatlab.analyze.svc import SummarizeText
 from lingpatlab.parser.svc import ParseInputTokens
 
 from lingpatlab.analyze.bp import (
@@ -54,31 +53,6 @@ class LingPatLab(BaseObject):
             *   https://github.com/craigtrim/datapipe-apis/issues/61
         """
         BaseObject.__init__(self, __name__)
-
-    def generate_summary(self,
-                         input_text: str) -> str:
-        """
-        Generates a summary for the given input text, optionally using a list of phrases to enhance the summarization process.
-
-        Parameters:
-            input_text (str): The text to summarize.
-            phrases (Optional[List[str]]): Optional list of phrases to consider for the summarization.
-
-        Returns:
-            str: The generated summary of the input text.
-        """
-        if self.isEnabledForDebug:
-            Enforcer.is_str(input_text)
-
-        if not self.__summarize:
-            self.__summarize = SummarizeText().process
-
-        summary = self.__summarize(input_text)
-
-        if self.isEnabledForDebug:
-            Enforcer.is_str(summary)
-
-        return summary
 
     def extract_people(self,
                        sentences: Sentence | Sentences) -> list[str]:

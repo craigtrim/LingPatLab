@@ -7,7 +7,7 @@ description = "Linguistic Pattern Lab using spaCy"
 license = "MIT"
 name = "lingpatlab"
 readme = "README.md"
-version = "0.1.16"
+version = "0.2.10"
 
 keywords = [
     "nlp",
@@ -46,9 +46,8 @@ repository = "https://github.com/craigtrim/lingpatlab"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-spacy = "3.7.4"
+spacy = "3.8.2"
 unicodedata2 = "*"
-openai = "*"
 
 [tool.poetry.extras]
 linting = []
@@ -67,7 +66,7 @@ plac = "*"
 
 [tool.poetry.group.packaging.dependencies]
 # keep the dependency here -- this way `parse-text/Dockerfile` won't require it in a build
-en_core_web_sm = { path = "resources/lib/en_core_web_sm-3.7.0.tar.gz" }
+en_core_web_sm = { path = "resources/lib/en_core_web_sm-3.8.0.tar.gz" }
 
 [tool.poetry.build]
 generate-setup-file = true

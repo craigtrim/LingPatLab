@@ -3,11 +3,11 @@
 # -------------------------------------------------------------
 ifeq ($(OS),Windows_NT)
 	os_shell := powershell
-	download_spacy_model := .\resources\scripts\Download-Spacy-Model.ps1
+	download_spacy_model := .\resources\scripts\download-spacy-model.ps1
 else
 	os_shell := bash
 	poetry_remove_lib := resources/scripts/poetry_remove_lib.sh
-	download_spacy_model := ./resources/scripts/download_spacy_model.sh
+	download_spacy_model := ./resources/scripts/download-spacy-model.sh
 endif
 
 # Download the Spacy model
