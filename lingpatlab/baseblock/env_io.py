@@ -133,7 +133,7 @@ class EnvIO(object):
             args (str): a list of one-or-more Environment Variable names
 
         Returns:
-            str or None: a list representation of the values
+            list: a list representation of the values
         """
         for env_var in args:
             if env_var in os.environ:
@@ -146,28 +146,28 @@ class EnvIO(object):
         return []
 
     @staticmethod
-    def as_str(*args) -> str or None:
+    def as_str(*args) -> str | None:
         """Retrieve Environment Variable as a string value
 
         Args:
             args (str): a list of one-or-more Environment Variable names
 
         Returns:
-            str or None: a String representation of the value
+            str | None: a String representation of the value
         """
         for env_var in args:
             if env_var in os.environ:
                 return str(os.environ[env_var])
 
     @staticmethod
-    def as_int(*args) -> int or None:
+    def as_int(*args) -> int | None:
         """Retrieve Environment Variable as an int value
 
         Args:
             args (str): a list of one-or-more Environment Variable names
 
         Returns:
-            str or None: an int representation of the value
+            int | None: an int representation of the value
         """
         for env_var in args:
             if env_var in os.environ:
@@ -177,14 +177,14 @@ class EnvIO(object):
                     pass
 
     @staticmethod
-    def as_float(*args) -> float or None:
+    def as_float(*args) -> float | None:
         """Retrieve Environment Variable as a float value
 
         Args:
             args (str): a list of one-or-more Environment Variable names
 
         Returns:
-            str or None: a float representation of the value
+            float | None: a float representation of the value
         """
         for env_var in args:
             if env_var in os.environ:
