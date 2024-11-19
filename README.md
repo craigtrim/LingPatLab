@@ -40,15 +40,6 @@ for phrase in phrases:
     print(phrase)
 ```
 
-### Summarization
-
-To generate a summary of the input text:
-
-```python
-summary: str = api.generate_summary("Your input text here.")
-print(summary)
-```
-
 ### Data Classes
 
 LingPatLab utilizes several custom data classes to structure the data throughout the NLP process:

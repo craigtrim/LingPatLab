@@ -3,18 +3,14 @@
 
 
 import os
-import traceback
-from datetime import datetime
-
-from io import StringIO
-from io import open as io_open
-
-from csv import reader as csv_reader
 from typing import List
 from typing import Optional
+from datetime import datetime
+from io import open as io_open
+from csv import reader as csv_reader
 
-from sys import platform
 from pathlib import Path
+from sys import platform
 from collections import defaultdict
 from codecs import open as codecs_open
 
@@ -23,20 +19,12 @@ from json import loads as json_loads
 from json import dumps as json_dumps
 from json.decoder import JSONDecodeError
 
-from yaml import Loader
-from yaml import YAMLError
-from yaml import dump as yaml_dump
-from yaml import load as yaml_load
-
 
 class FileIO(object):
     """ File Input/Output Utility Methods """
 
-    
-
     @staticmethod
     def is_empty_folder(folder_name: str) -> bool:
-        
         """ Check if a Folder is Empty of Contents
 
         Args:
@@ -370,54 +358,6 @@ class FileIO(object):
                             debug=debug)
 
     @staticmethod
-    def write_yaml(d: dict,
-                   file_path: str,
-                   debug: bool = False) -> None:
-        """ Write YAML to File
-
-        Args:
-            d (dict): the py YAML dictionary
-            file_path (str): the absolute and qualified output file path
-            debug (bool). if True, print result to console. Defaults to False.
-        """
-        with open(file_path, 'w') as file:
-            yaml_dump(d, file)
-            if debug:
-                print(f'Wrote to File: {file_path}')
-
-    @staticmethod
-    def read_yaml(file_path: str) -> dict:
-        """ Read YAML from File
-
-        Args:
-            file_path (str): the absolute and qualified input file path
-
-        Raises:
-            ValueError: the file is not valid YAML
-
-        Returns:
-            dict: a py YAML dictionary
-        """
-        FileIO.exists_or_error(file_path)
-
-        with open(file_path, 'r', encoding='utf-8') as stream:
-            try:
-
-                return yaml_load(stream, Loader=Loader)
-
-            except YAMLError:
-                traceback.format_exc()
-                raise ValueError('\n'.join([
-                    'Invalid File',
-                    '\t{0}'.format(file_path)]))
-
-            except UnicodeDecodeError:
-                print(traceback.format_exc())
-                raise ValueError('\n'.join([
-                    'Encoding Error',
-                    '\t{0}'.format(file_path)]))
-
-    @staticmethod
     def read_lines(file_path: str,
                    file_encoding: str = 'utf-8') -> list:
         """ Read Lines of a File into a List
@@ -439,7 +379,7 @@ class FileIO(object):
 
     @staticmethod
     def yield_lines(file_path: str,
-                    file_encoding: str = 'utf-8') -> list:
+                    file_encoding: str = 'utf-8'):
         """Read Lines of a File using a yield Generator
 
         Args:
@@ -726,7 +666,7 @@ class FileIO(object):
 
         return dict(d_folders)
 
-    def extension(file_name: str) -> str or None:
+    def extension(file_name: str) -> str | None:
         """ Extract Extension from a File Name
 
         Args:
@@ -741,24 +681,6 @@ class FileIO(object):
         if not len(ext):
             return None
         return ext
-
-    @staticmethod
-    def parse_yaml(file_data: str) -> dict:
-        """ Read YAML from String
-
-        Args:
-            file_data (str): the string-ified YAML data
-
-        Raises:
-            ValueError: the file data is not valid YAML
-
-        Returns:
-            dict: a py YAML dictionary
-        """
-        try:
-            return yaml_load(StringIO(file_data), Loader)
-        except YAMLError:
-            raise ValueError('Invalid YAML Data')
 
     @staticmethod
     def parse_json(file_data: str) -> dict:

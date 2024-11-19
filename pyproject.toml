@@ -7,7 +7,7 @@ description = "Linguistic Pattern Lab using spaCy"
 license = "MIT"
 name = "lingpatlab"
 readme = "README.md"
-version = "0.2.10"
+version = "0.2.11"
 
 keywords = [
     "nlp",
