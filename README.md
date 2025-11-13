@@ -1,50 +1,132 @@
-# LingPatLab: Linguistic Pattern Laboratory
+# LingPatLab
 
-## Overview
+[![PyPI version](https://badge.fury.io/py/lingpatlab.svg)](https://badge.fury.io/py/lingpatlab)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![spaCy](https://img.shields.io/badge/built%20with-spaCy-09a3d5.svg)](https://spacy.io)
 
-LingPatLab is a robust API designed to perform advanced Natural Language Processing (NLP) tasks, utilizing the capabilities of the spaCy library. This tool is expertly crafted to convert raw textual data into structured, analyzable forms. It is ideal for developers, researchers, and linguists who require comprehensive processing capabilities, from tokenization to sophisticated text summarization.
+> Linguistic Pattern Laboratory: Advanced NLP pipeline for text analysis, entity extraction, and pattern recognition.
 
 ## Features
 
-- **Tokenization**: Splits raw text into individual tokens.
-- **Parsing**: Analyzes tokens to construct sentences with detailed linguistic annotations.
-- **Phrase Extraction**: Identifies and extracts significant phrases from sentences.
-- **Text Summarization**: Produces concise summaries of input text, optionally leveraging extracted phrases.
+- **Tokenization**: Custom Graffl tokenizer with intelligent handling of contractions, abbreviations, and punctuation
+- **Parsing**: Deep linguistic analysis with POS tagging, dependency parsing, and WordNet integration
+- **Entity Extraction**: Pattern-based extraction of people and topics with anaphora resolution
+- **Segmentation**: Paragraph and sentence boundary detection
+- **Rich Annotations**: Sentiment, lemmatization, stemming, and morphological features
 
-## Usage
+## Installation
 
-To get started with LingPatLab, you can set up the API as follows:
+```bash
+pip install lingpatlab
+```
+
+## Quick Start
 
 ```python
-from spacy_core.api import SpacyCoreAPI
+from lingpatlab import LingPatLab
 
 api = LingPatLab()
+
+# Parse text into structured tokens
+sentence = api.parse_input_text("Admiral Nimitz commanded the Pacific Fleet.")
+print(sentence.to_string())
+
+# Extract people with anaphora resolution
+text = "Admiral William Halsey led the fleet. Halsey was known for his aggressive tactics."
+sentence = api.parse_input_text(text)
+people = api.extract_people(sentence)
+# Returns: {'Halsey': ['Admiral William Halsey', 'Halsey']}
+
+# Extract topics and named entities
+topics = api.extract_topics(sentence)
 ```
 
-### Tokenization and Parsing
+## Usage Examples
 
-To tokenize and parse input text into structured sentences:
+### Parse Multiple Lines
 
 ```python
-parsed_sentence: Sentence = api.parse_input_text("Your input text here.")
-print(parsed_sentence.to_string())
+lines = [
+    "The Battle of Midway was a turning point.",
+    "Admiral Nimitz made crucial decisions."
+]
+sentences = api.parse_input_lines(lines)
+
+for sentence in sentences:
+    print(sentence.to_string())
 ```
 
-### Phrase Extraction
-
-To extract phrases from a structured Sentences object:
+### Segmentation
 
 ```python
-phrases: List[str] = api.extract_topics(parsed_sentences)
-for phrase in phrases:
-    print(phrase)
+from lingpatlab import segment_input_text
+
+text = "First sentence. Second sentence. Third sentence."
+segments = segment_input_text(text)
+# Returns: ['First sentence.', 'Second sentence.', 'Third sentence.']
 ```
 
-### Data Classes
+### Access Token Details
 
-LingPatLab utilizes several custom data classes to structure the data throughout the NLP process:
+```python
+sentence = api.parse_input_text("The quick brown fox jumps.")
 
-- `Sentence`: Represents a single sentence, containing a list of tokens (`SpacyResult` objects).
-- `Sentences`: Represents a collection of sentences, useful for processing paragraphs or multiple lines of text.
-- `SpacyResult`: Encapsulates the detailed analysis of a single token, including part of speech, dependency relations, and additional linguistic features.
-- `OtherInfo`: Contains additional information about a token, particularly in relation to its syntactic head.
+for token in sentence:
+    print(f"Text: {token.text}")
+    print(f"POS: {token.pos}")
+    print(f"Lemma: {token.normal}")
+    print(f"Is WordNet: {token.is_wordnet}")
+    print(f"Dependency: {token.dep}")
+```
+
+## Data Classes
+
+- **`Sentence`**: Single sentence with token list
+- **`Sentences`**: Collection of sentences
+- **`SpacyResult`**: Individual token with full linguistic annotation
+- **`OtherInfo`**: Additional morphological and dependency metadata
+
+## Architecture
+
+```
+LingPatLab
+├── tokenizer/     # Custom tokenization with Graffl
+├── parser/        # spaCy integration + enhancements
+├── analyzer/      # Entity extraction with pattern matching
+├── segmenter/     # Sentence and paragraph segmentation
+└── utils/         # WordNet, Porter stemmer, utilities
+```
+
+## Requirements
+
+- Python 3.10+
+- spaCy 3.8.2
+- spaCy model: `en_core_web_sm`
+
+## Development
+
+```bash
+# Install with dev dependencies
+pip install -e ".[linting,testing]"
+
+# Run tests
+pytest
+
+# Run regression suite
+python regression/regression_runner.py
+```
+
+## Links
+
+- [PyPI Package](https://pypi.org/project/lingpatlab/)
+- [GitHub Repository](https://github.com/craigtrim/lingpatlab)
+- [Issue Tracker](https://github.com/craigtrim/lingpatlab/issues)
+
+## License
+
+MIT License - see [LICENSE](LICENSE) for details.
+
+## Author
+
+**Craig Trim** - [craigtrim@gmail.com](mailto:craigtrim@gmail.com)

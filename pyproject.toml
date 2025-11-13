@@ -12,31 +12,36 @@ version = "0.2.13"
 keywords = [
     "nlp",
     "spacy",
+    "natural-language-processing",
     "text-analysis",
     "linguistic-patterns",
-    "natural-language-processing",
-    "machine-learning",
-    "api",
-    "cloud",
-    "AWS",
-    "microservice",
-    "utility",
+    "tokenization",
+    "parsing",
+    "entity-extraction",
+    "named-entity-recognition",
+    "pos-tagging",
+    "dependency-parsing",
+    "wordnet",
+    "text-segmentation",
+    "anaphora-resolution",
 ]
 
 
 classifiers = [
     "Development Status :: 4 - Beta",
-    "Environment :: Web Environment",
     "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
     "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3 :: Only",
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Text Processing :: Linguistic",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Information Analysis",
 ]
 
 repository = "https://github.com/craigtrim/lingpatlab"
