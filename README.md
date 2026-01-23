@@ -127,8 +127,10 @@ python regression/regression_runner.py
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) for details.
+MIT License - see [LICENSE](https://github.com/craigtrim/lingpatlab/blob/master/LICENSE) for details.
 
 ## Author
 
 **Craig Trim** - [craigtrim@gmail.com](mailto:craigtrim@gmail.com)
+
+More NLP articles and demos at [craigtrim.com](http://craigtrim.com/)
