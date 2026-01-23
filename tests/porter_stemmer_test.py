@@ -3,7 +3,7 @@
 
 
 import unittest
-from lingpatlab.utils.dmo import PorterStemmer
+from lingpatlab.utils import PorterStemmer
 
 
 class TestPosSequenceExtractor(unittest.TestCase):

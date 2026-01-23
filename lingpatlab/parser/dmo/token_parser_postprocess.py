@@ -3,7 +3,7 @@
 """ Add Wordnet Flag to Token """
 
 
-from lingpatlab.utils.dmo import PorterStemmer
+from lingpatlab.utils import PorterStemmer
 
 from lingpatlab.baseblock import BaseObject
 

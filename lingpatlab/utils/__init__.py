@@ -1,11 +1,4 @@
-from .bp import *
-from .svc import *
-from .dmo import *
 from .dto import *
+from .porter_stemmer import PorterStemmer
 
-from .svc.find_wordnet import FindWordnet
-from .os import *
-
-
-def is_wordnet_term(input_text: str) -> bool:
-    return FindWordnet().exists(input_text)
+from wordnet_lookup import is_wordnet_term
