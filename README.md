@@ -1,8 +1,10 @@
 # LingPatLab
 
 [![PyPI version](https://badge.fury.io/py/lingpatlab.svg)](https://badge.fury.io/py/lingpatlab)
+[![Downloads](https://static.pepy.tech/badge/lingpatlab)](https://pepy.tech/project/lingpatlab)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Code style: autopep8](https://img.shields.io/badge/code%20style-autopep8-blue.svg)](https://github.com/hhatto/autopep8)
 [![spaCy](https://img.shields.io/badge/built%20with-spaCy-09a3d5.svg)](https://spacy.io)
 
 > Linguistic Pattern Laboratory: Advanced NLP pipeline for text analysis, entity extraction, and pattern recognition.
