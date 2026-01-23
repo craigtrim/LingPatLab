@@ -13,3 +13,6 @@ secret_manager_access_driver.py
 .env
 dist/
 copy.sh
+pypi.key
+.claude
+drivers/
